@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Список запросов</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Тут типо список всех запросов</h1>
+    <div th:each="requestList : ${requests}" class="alert alert-info mt-2">
+        <h3 th:text="'Заявитель: '"/>
+        <h5 th:text="'Имя: ' + ${requestList.user.name}"/>
+        <h5 th:text="'Фамилия: ' + ${requestList.user.lastName}"/>
+        <h5 th:text="'должность: ' + ${requestList.user.post}"/>
+        <h3 th:text="'Информация о заявке: '"/>
+        <h5 th:text="'Товар: ' + ${requestList.goods}"/>
+        <h5 th:text="'Количество: ' + ${requestList.quantity} + ' шт.'"/>
+        <h5 th:text="'Цена: ' + ${requestList.price} + ' руб.'"/>
+        <h5 th:text="'Коментарии к заявке: ' + ${requestList.comment}"/>
+        <h3 th:text="'Статус заявки: '"/>
+        <h5 th:text="${requestList.status}"/>
+        <a th:href="'/supervisorList/' + ${requestList.id}" class="btn btn-warning">Посмотреть детали</a>
+    </div>
+</div>
+</body>
+</html>
